@@ -1,0 +1,39 @@
+//https://codeforces.com/problemset/problem/680/B
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+std::array<int,1001>arr;
+arr.fill(1);
+int n,k,d=0,count=0,mn=-1;
+cin>>n>>k;
+mn=min(k,abs(n-k));
+for(int j=1;j<=n;j++)
+{
+    cin>>arr[j];
+}
+for(int i=1;i<=n;i++)
+{
+    d=abs(k-i);
+    if(i>k&&i<2*k)
+        continue;
+    if(arr[i]==1)
+    {
+        if(arr[k+d])
+        {
+            count+=2;
+           arr[k+d]=0;
+           if(k+d>n||d==0||k-d<1)
+           {
+            count--;
+           }
+       }
+    }
+
+}
+cout<<count;
+    return 0;
+}
+
